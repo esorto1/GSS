@@ -1,6 +1,6 @@
 ---
 title: "Social Survey 2010"
-author: "Put your name here!"
+author: "ESMERALDA sORTO"
 date: "Fall 2018"
 output:
   html_document:
@@ -43,16 +43,36 @@ alldata <- read.csv(file="gss2010.csv", header=TRUE)
 barchartGC(~race+condrift, data=alldata, type = "percent") 
 ```
 
+From the graph we can see that the results were different from the black and white. We can see that more black people do not think the contientioal drift is real while more whites and other think it is real.  
+
 
 ### Numerical Descriptive Results
+```{r}
+barchartGC(~race+cappun, data=alldata, type = "percent")
+```
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+From these results we can see that black people are less in favor of the capital punishment and white people are more in favor of the capital punishment.  
+
+```{r}
+tab1 =xtabs(~race+condrift, data=alldata)
+rowPerc(tab1)
+colPerc(tab1)
+```
 
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+```{r}
+chisqtestGC(tab1,graph=TRUE)
+```
+
+From our results we are going to reject the null hypothesis because the P-Value is really low.  
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+In conclusion, the data does not seem independent because they are related to each other so that means they are dependent.  
+
